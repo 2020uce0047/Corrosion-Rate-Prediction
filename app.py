@@ -15,7 +15,7 @@ default_values = {
 }
 
 def main():
-    st.title("Corrosion Rate Prediction")
+    st.title("Reduction in Residual Strength")
 
     st.header("Enter the following parameters:")
 
@@ -40,7 +40,10 @@ def main():
         mass_of_corroded_substance = np.exp(-duration)/(1+(wc_ratio/1 + wc_ratio))
         input_features = np.array([[steel_diameter, temperature, relative_humidity, duration, chloride_diffusion_rate, mass_of_corroded_substance]])
         corrosion_rate = model.predict(input_features)[0]
-        st.write(f"The predicted corrosion rate is: {corrosion_rate:.2f}")
+        corrosion_percent = 0.046*corrosion_rate*duration/steel_diameter
+        reduction_residual_str = 0.5*corrosion_percent
+        st.write(f"Degree of corrosion : {corrosion_percent:.2f}")
+        st.write(f"Percentage reduction in strength : {reduction_residual_str:.2f}")
 
 if __name__ == "__main__":
     main()
