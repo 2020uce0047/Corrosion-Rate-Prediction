@@ -15,7 +15,7 @@ default_values = {
 }
 
 def main():
-    st.title("Reduction in Residual Strength")
+    st.title("Residual Strength")
 
     st.header("Enter the following parameters:")
 
