@@ -44,7 +44,7 @@ def main():
         reduction_residual_str = 0.5*corrosion_percent
         st.write(f"Corrosion Rate (µA/cm2) : {corrosion_rate:.3f}")
         st.write(f"Degree of corrosion (%) : {corrosion_percent:.3f}")
-        st.write(f"Reduction in strength (%): {reduction_residual_str:.3f}")
+        st.write(f"Reduction in strength (%) : {reduction_residual_str:.3f}")
 
 if __name__ == "__main__":
     main()
