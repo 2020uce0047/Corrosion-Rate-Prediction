@@ -40,11 +40,11 @@ def main():
         mass_of_corroded_substance = np.exp(-duration)/(1+(wc_ratio/1 + wc_ratio))
         input_features = np.array([[steel_diameter, temperature, relative_humidity, duration, chloride_diffusion_rate, mass_of_corroded_substance]])
         corrosion_rate = loaded_model.predict(input_features)[0]
-        corrosion_percent = 0.046*corrosion_rate*duration/steel_diameter
+        corrosion_percent = 4.6*corrosion_rate*duration/steel_diameter
         reduction_residual_str = 0.5*corrosion_percent
-        st.write(f"Corrosion rate : {corrosion_rate:.2f}")
-        st.write(f"Degree of corrosion : {corrosion_percent:.2f}")
-        st.write(f"Percentage reduction in strength : {reduction_residual_str:.2f}")
+        st.write(f"Corrosion rate : {corrosion_rate:.3f}")
+        st.write(f"Degree of corrosion : {corrosion_percent:.3f}")
+        st.write(f"Percentage reduction in strength : {reduction_residual_str:.3f}")
 
 if __name__ == "__main__":
     main()
