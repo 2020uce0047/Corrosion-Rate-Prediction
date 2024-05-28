@@ -42,6 +42,7 @@ def main():
         corrosion_rate = loaded_model.predict(input_features)[0]
         corrosion_percent = 0.046*corrosion_rate*duration/steel_diameter
         reduction_residual_str = 0.5*corrosion_percent
+        st.write(f"Corrosion rate : {corrosion_rate:.2f}")
         st.write(f"Degree of corrosion : {corrosion_percent:.2f}")
         st.write(f"Percentage reduction in strength : {reduction_residual_str:.2f}")
 
