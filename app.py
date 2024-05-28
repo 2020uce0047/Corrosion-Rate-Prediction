@@ -35,7 +35,7 @@ def main():
     
 
     # Make prediction and display the result
-    if st.button("Predict Corrosion Rate"):
+    if st.button("Submit"):
         chloride_diffusion_rate = chloride_content/duration
         mass_of_corroded_substance = np.exp(-duration)/(1+(wc_ratio/1 + wc_ratio))
         input_features = np.array([[steel_diameter, temperature, relative_humidity, duration, chloride_diffusion_rate, mass_of_corroded_substance]])
