@@ -1,12 +1,13 @@
 # app.py
 
 import streamlit as st
-import joblib
+import pickle
 import numpy as np
 
 # Load the pre-trained model
 model_filename = 'corrosion_rate_model.pkl'
-model = joblib.load(model_filename)
+with open(model_filename, 'rb') as file:
+    loaded_model = pickle.load(file)
 
 default_values = {
     'mild': {'chloride_content': 0.1, 'temperature': 300.0, 'relative_humidity': 50.0},
