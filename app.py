@@ -19,20 +19,6 @@ def main():
 
     st.header("Enter the following parameters:")
 
-    # Initialize session state if not already done
-    if 'steel_diameter' not in st.session_state:
-        st.session_state.steel_diameter = 0
-    if 'duration' not in st.session_state:
-        st.session_state.duration = 0.0
-    if 'wc_ratio' not in st.session_state:
-        st.session_state.wc_ratio = 0.0
-    if 'chloride_content' not in st.session_state:
-        st.session_state.chloride_content = default_values['mild']['chloride_content']
-    if 'temperature' not in st.session_state:
-        st.session_state.temperature = default_values['mild']['temperature']
-    if 'relative_humidity' not in st.session_state:
-        st.session_state.relative_humidity = default_values['mild']['relative_humidity']
-
     # Condition selection
     condition = st.selectbox("Choose the condition", ("mild", "moderate", "severe"))
 
