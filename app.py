@@ -37,12 +37,15 @@ def main():
     # Make prediction and display the result
     if st.button("Submit"):
         chloride_diffusion_rate = chloride_content/duration
-        mass_of_corroded_substance = np.exp(-duration)/(1+(wc_ratio/1 + wc_ratio))
+        mass_of_corroded_substance = duration * 365 * 24 * 3600 * np.exp(-duration)/((1+(wc_ratio/1 + wc_ratio)) * 2 * 96485)
         input_features = np.array([[steel_diameter, temperature, relative_humidity, duration, chloride_diffusion_rate, mass_of_corroded_substance]])
         corrosion_rate = loaded_model.predict(input_features)[0]
-        corrosion_percent = 4.6*corrosion_rate*duration/steel_diameter
+
+        duration_values = np.linspace(0.01, duration, 15)
+        avg_corrosion_rate = np.mean([loaded_model.predict(np.array([[steel_diameter, temperature, relative_humidity, duration, chloride_diffusion_rate, mass_of_corroded_substance]]))[0] for duration in duration_values])
+        corrosion_percent = 4.6*avg_corrosion_rate*duration/steel_diameter
         reduction_residual_str = 0.5*corrosion_percent
-        st.write(f"Corrosion Rate (µA/cm2) : {corrosion_rate:.3f}")
+        st.write(f"Average Corrosion Rate (µA/cm2) : {avg_corrosion_rate:.3f}")
         st.write(f"Degree of corrosion (%) : {corrosion_percent:.3f}")
         st.write(f"Reduction in strength (%) : {reduction_residual_str:.3f}")
 
