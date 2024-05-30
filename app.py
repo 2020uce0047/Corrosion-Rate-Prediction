@@ -9,9 +9,9 @@ model_filename = 'corrosion_rate_model.pkl'
 loaded_model = joblib.load(model_filename)
 
 default_values = {
-    'mild': {'chloride_content': 0.1, 'temperature': 300.0, 'relative_humidity': 50.0},
-    'moderate': {'chloride_content': 0.3, 'temperature': 310.0, 'relative_humidity': 60.0},
-    'severe': {'chloride_content': 0.5, 'temperature': 320.0, 'relative_humidity': 70.0},
+    'mild': {'chloride_content': 0.5, 'temperature': 300.0, 'relative_humidity': 60.0},
+    'moderate': {'chloride_content': 1.2, 'temperature': 310.0, 'relative_humidity': 70.0},
+    'severe': {'chloride_content': 3, 'temperature': 320.0, 'relative_humidity': 80.0},
 }
 
 def main():
